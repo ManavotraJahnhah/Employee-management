@@ -12,6 +12,14 @@
             Employee List
           </h2>
         </div>
+        
+    <div class="row">
+        <!-- search box -->
+        <div class="toolbar-item col-sm-3 col-md-5 p-4">
+            <wj-flex-grid-search [placeholder]="'Search'" [grid]="flex" cssMatch="">
+            </wj-flex-grid-search>
+        </div>
+    </div>
 
         <!-- Body -->
         <div class="card-body p-4">
@@ -44,6 +52,10 @@
   <wj-flex-grid-column header="Name" binding="name" [width]="180"></wj-flex-grid-column>
 
   <wj-flex-grid-column header="Surname" binding="surname" [width]="180"></wj-flex-grid-column>
+
+  <wj-flex-grid-column binding="date" header="Date" format="MMM d yyyy" [isRequired]="false" [width]="130"
+    [editor]="theInputDate" binding="date">
+</wj-flex-grid-column>
 
   <wj-flex-grid-column header="Department" binding="department" [width]="180"></wj-flex-grid-column>
 
@@ -90,3 +102,9 @@
     (close)="closeModal()"
   ></app-employee-view-modal>
 </ng-container>
+
+<!-- custom editors -->
+<wj-input-date #theInputDate format="MM/dd/yyyy" [isRequired]="false">
+</wj-input-date>
+<wj-input-time #theInputTime format="HH:mm" [isRequired]="false">
+</wj-input-time>

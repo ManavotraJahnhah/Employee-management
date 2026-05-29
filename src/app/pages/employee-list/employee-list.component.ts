@@ -12,6 +12,8 @@ import { WjGridFilterModule } from '@mescius/wijmo.angular2.grid.filter';
 
 import { FlexGrid } from '@mescius/wijmo.grid';
 import { FlexGridFilter } from '@mescius/wijmo.grid.filter';
+import { WjGridSearchModule } from '@mescius/wijmo.angular2.grid.search';
+import { WjInputModule } from '@mescius/wijmo.angular2.input';
 
 /**
  * Grid model
@@ -28,7 +30,9 @@ interface EmployeeGridRow extends Employee {
     CommonModule,
     EmployeeViewModalComponent,
     WjGridModule,
-    WjGridFilterModule
+    WjGridFilterModule,
+    WjGridSearchModule,
+    WjInputModule
   ],
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
