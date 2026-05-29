@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -8,9 +8,13 @@ import { Employee } from '../../models/employee.model';
 import { EmployeeViewModalComponent } from '../../shared/employee-view-modal.component';
 
 import { WjGridModule } from '@mescius/wijmo.angular2.grid';
+import { WjGridFilterModule } from '@mescius/wijmo.angular2.grid.filter';
+
+import { FlexGrid } from '@mescius/wijmo.grid';
+import { FlexGridFilter } from '@mescius/wijmo.grid.filter';
 
 /**
- * Dedicated model for Wijmo grid display
+ * Grid model
  */
 interface EmployeeGridRow extends Employee {
   responsibilitiesText: string;
@@ -24,26 +28,26 @@ interface EmployeeGridRow extends Employee {
     CommonModule,
     EmployeeViewModalComponent,
     WjGridModule,
+    WjGridFilterModule
   ],
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, AfterViewInit {
 
-  /**
-   * Data used by the Wijmo grid
-   */
+  /** Grid data */
   employees: EmployeeGridRow[] = [];
 
-  /**
-   * Employee currently displayed in modal
-   */
+  /** Modal */
   selectedEmployee?: Employee;
 
-  /**
-   * Selected employee id
-   */
   selectedId: number | null = null;
+
+  /** Wijmo grid reference */
+  @ViewChild('flex', { static: false }) flex!: FlexGrid;
+
+  /** Filter instance */
+  private filter!: FlexGridFilter;
 
   constructor(
     private employeeService: EmployeeService,
@@ -51,13 +55,9 @@ export class EmployeeListComponent implements OnInit {
     private router: Router
   ) {}
 
-  /**
-   * Initialise employee list
-   */
   ngOnInit(): void {
-
     this.employeeService.employees$.subscribe((list) => {
-      this.employees = list.map((emp) => ({
+      this.employees = list.map(emp => ({
         ...emp,
         responsibilitiesText: emp.responsibilities.join(', '),
         dailySalaryFormatted: emp.dailySalary.toFixed(2)
@@ -67,9 +67,14 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.refresh();
   }
 
-  /**
-   * Open employee modal
-   */
+  ngAfterViewInit(): void {
+    // IMPORTANT: activate Wijmo filter here
+    this.filter = new FlexGridFilter(this.flex, {
+      showFilterIcons: true
+    });
+  }
+
+  /** View employee */
   viewEmployee(id: number): void {
     const emp = this.employeeService.getEmployeeById(id);
     if (emp) {
@@ -78,36 +83,29 @@ export class EmployeeListComponent implements OnInit {
     }
   }
 
-  /**
-   * Close employee modal
-   */
+  /** Close modal */
   closeModal(): void {
     this.selectedEmployee = undefined;
     this.selectedId = null;
   }
 
-  /**
-   * Navigate to edit page
-   */
+  /** Edit */
   editEmployee(id: number): void {
     this.selectedEmployeeService.setSelected(id);
     this.router.navigate(['/update-employee']);
   }
 
-  /**
-   * Delete employee
-   */
+  /** Delete */
   deleteEmployee(id: number): void {
     const emp = this.employeeService.getEmployeeById(id);
-    if (!emp) {
-      return;
-    }
+    if (!emp) return;
+
     const confirmed = window.confirm(
       `Are you sure you want to delete ${emp.name} ${emp.surname}?`
     );
-    if (!confirmed) {
-      return;
+
+    if (confirmed) {
+      this.employeeService.deleteEmployeeById(id);
     }
-    this.employeeService.deleteEmployeeById(id);
   }
 }

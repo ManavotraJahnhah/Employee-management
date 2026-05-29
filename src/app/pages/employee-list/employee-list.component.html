@@ -30,105 +30,48 @@
   [itemsSource]="employees"
   [autoGenerateColumns]="false"
   [isReadOnly]="false"
-  [allowAddNew]="true"
+  [allowAddNew]="false"
   [allowDelete]="true"
   [allowSorting]="true"
   [allowDragging]="'Both'"
   [allowResizing]="'Both'"
-  [allowMerging]="'All'"
   [selectionMode]="'RowRange'"
   [showMarquee]="true"
   [headersVisibility]="'All'"
-  [showSelectedHeaders]="'All'"
-  [alternatingRowStep]="1"
   [stickyHeaders]="true"
-  [autoClipboard]="true"
-  [deferResizing]="true"
-  [quickAutoSize]="true"
-  [imeEnabled]="true"
-  [rowHeaderPath]="'id'"
-  [validateEdits]="true"
-  keyActionTab="Cycle"
-  keyActionEnter="MoveDown"
-
 >
 
-            <!-- Name -->
-            <wj-flex-grid-column
-              header="Name"
-              binding="name"
-              [width]="180"
-            ></wj-flex-grid-column>
+  <wj-flex-grid-column header="Name" binding="name" [width]="180"></wj-flex-grid-column>
 
-            <!-- Surname -->
-            <wj-flex-grid-column
-              header="Surname"
-              binding="surname"
-              [width]="180"
-            ></wj-flex-grid-column>
+  <wj-flex-grid-column header="Surname" binding="surname" [width]="180"></wj-flex-grid-column>
 
-            <!-- Department -->
-            <wj-flex-grid-column
-              header="Department"
-              binding="department"
-              [width]="180"
-            ></wj-flex-grid-column>
+  <wj-flex-grid-column header="Department" binding="department" [width]="180"></wj-flex-grid-column>
 
-            <!-- Daily Salary -->
-            <wj-flex-grid-column
-              header="Daily Salary"
-              binding="dailySalaryFormatted"
-              align="right"
-              [width]="140"
-            ></wj-flex-grid-column>
+  <wj-flex-grid-column header="Daily Salary" binding="dailySalaryFormatted" align="right" [width]="140"></wj-flex-grid-column>
 
-            <!-- Salary Handling -->
-            <wj-flex-grid-column
-              header="Salary Handling"
-              binding="salaryHandling"
-              [width]="160"
-            ></wj-flex-grid-column>
+  <wj-flex-grid-column header="Salary Handling" binding="salaryHandling" [width]="160"></wj-flex-grid-column>
 
-            <!-- Actions -->
-            <wj-flex-grid-column
-              header="Actions"
-              [width]="170"
-              align="center"
-            >
+  <wj-flex-grid-column header="Actions" [width]="170" align="center">
 
-              <ng-template
-                wjFlexGridCellTemplate
-                [cellType]="'Cell'"
-                let-row="row"
-              >
+    <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-row="row">
 
-                <!-- View -->
-                <i
-                  class="bi bi-eye text-primary me-3 action-icon"
-                  (click)="viewEmployee(row.dataItem.id)"
-                  title="View"
-                ></i>
+      <i class="bi bi-eye text-primary me-3 action-icon"
+         (click)="viewEmployee(row.dataItem.id)"
+         title="View"></i>
 
-                <!-- Update (action) -->
-                <i
-                  class="bi bi-pencil me-3 action-icon"
-                  (click)="editEmployee(row.dataItem.id)"
-                  title="Update"
-                >
-                </i>
+      <i class="bi bi-pencil me-3 action-icon"
+         (click)="editEmployee(row.dataItem.id)"
+         title="Update"></i>
 
-                <!-- Delete -->
-                <i
-                  class="bi bi-trash text-danger action-icon"
-                  (click)="deleteEmployee(row.dataItem.id)"
-                  title="Delete"
-                ></i>
+      <i class="bi bi-trash text-danger action-icon"
+         (click)="deleteEmployee(row.dataItem.id)"
+         title="Delete"></i>
 
-              </ng-template>
+    </ng-template>
 
-            </wj-flex-grid-column>
+  </wj-flex-grid-column>
 
-          </wj-flex-grid>
+</wj-flex-grid>
 
         </div>
 

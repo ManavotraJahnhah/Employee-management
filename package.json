@@ -21,6 +21,7 @@
     "@angular/router": "^21.2.14",
     "@mescius/wijmo": "^5.20261.50",
     "@mescius/wijmo.angular2.grid": "^5.20261.50",
+    "@mescius/wijmo.angular2.grid.filter": "^5.20261.50",
     "@mescius/wijmo.styles": "^5.20261.50",
     "@ngx-formly/bootstrap": "7.1",
     "@ngx-formly/core": "7.1",
