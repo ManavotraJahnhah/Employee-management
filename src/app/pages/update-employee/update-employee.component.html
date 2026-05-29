@@ -1,0 +1,35 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-success text-white py-3">
+          <h2 class="mb-0">
+            <i class="bi bi-pencil-square"></i> {{ pageTitle }}
+          </h2>
+        </div>
+        <div class="card-body p-4">
+          <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> Employee saved to localStorage.
+            <button type="button" class="btn-close" aria-label="Close" (click)="showSuccess = false"></button>
+          </div>
+
+          <form [formGroup]="form" (ngSubmit)="saveEmployee()" class="row g-3">
+            <formly-form
+              [form]="form"
+              [fields]="fields"
+              [model]="model"
+              [options]="options"
+              class="col-12"
+            ></formly-form>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-success btn-lg w-100">
+                <i class="bi bi-save"></i> Save Employee
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

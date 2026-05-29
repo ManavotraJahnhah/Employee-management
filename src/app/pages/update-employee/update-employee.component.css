@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  min-height: calc(100vh - 70px);
+  background-color: #f8f9fa;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.btn-success {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.formly-field {
+  margin-bottom: 1.25rem;
+}
+
+.formly-field label {
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.formly-field label .text-danger,
+.formly-field label .formly-required {
+  color: #dc3545 !important;
+}
+
+.form-control,
+.form-select {
+  min-height: 3.05rem;
+  border-radius: 0.55rem;
+}
+
+select[multiple] {
+  height: auto !important;
+  min-height: 3.05rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}

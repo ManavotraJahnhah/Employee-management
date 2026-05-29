@@ -1,0 +1,27 @@
+.employee-grid {
+  height: 550px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.wj-flexgrid {
+  border: none;
+  font-size: 14px;
+}
+
+.wj-header {
+  font-weight: 600;
+}
+
+.wj-cell {
+  padding: 10px;
+}
+
+.action-icon {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.action-icon:hover {
+  transform: scale(1.15);
+}

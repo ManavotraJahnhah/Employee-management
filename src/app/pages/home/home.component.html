@@ -1,0 +1,79 @@
+<div class="hero-section">
+  <div class="container-fluid h-100 d-flex align-items-center">
+    <div class="row w-100">
+      <div class="col-lg-8 mx-auto text-center">
+        <div class="hero-content">
+          <h1 class="display-3 fw-bold mb-4 text-white">
+            Welcome to Employee Management
+          </h1>
+          <p class="lead mb-5 text-white-50">
+            Manage your workforce efficiently with our modern employee management system.
+            Track, update, and organize employee information all in one place.
+          </p>
+          <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <button
+              class="btn btn-primary btn-lg px-5"
+              [routerLink]="['/employees']"
+              [skipLocationChange]="true"
+            >
+              <i class="bi bi-people-fill"></i> View Employees
+            </button>
+            <button
+              class="btn btn-outline-light btn-lg px-5"
+              [routerLink]="['/update-employee']"
+              [skipLocationChange]="true"
+            >
+              <i class="bi bi-pencil-square"></i> Create Employee
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center">
+            <div class="display-6 text-primary mb-3">
+              <i class="bi bi-speedometer2"></i>
+            </div>
+            <h5 class="card-title">Fast & Efficient</h5>
+            <p class="card-text">
+              Access employee data instantly with our optimized system.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center">
+            <div class="display-6 text-success mb-3">
+              <i class="bi bi-shield-lock"></i>
+            </div>
+            <h5 class="card-title">Secure & Reliable</h5>
+            <p class="card-text">
+              Your data is protected with enterprise-grade security.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center">
+            <div class="display-6 text-info mb-3">
+              <i class="bi bi-cloud-check"></i>
+            </div>
+            <h5 class="card-title">Always Available</h5>
+            <p class="card-text">
+              Access your data anytime, anywhere with cloud infrastructure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
